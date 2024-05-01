@@ -26,3 +26,25 @@ func Check(s string) bool {
 	}
 	return true
 }
+func Back(s string) (bool, int) {
+	if len(s) <= 1 {
+		return false, 0
+	}
+	numbre := 0
+	for i := 0; i < len(s)-1; i++ {
+		if s[i] == '\\' {
+			if s[i+1] == 'n' {
+				numbre++
+				i++
+			} else {
+				return false, 0
+			}
+		} else {
+			return false, 0
+		}
+	}
+	if s[len(s)-1] == 'n' && s[len(s)-2] == '\\' {
+		return true, numbre
+	}
+	return false, numbre
+}

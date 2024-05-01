@@ -12,9 +12,9 @@ func SplitBackN(s string) []string {
 			word += string(s[i])
 		}
 	}
-	if word != "" {
-		splitBackN = append(splitBackN, word)
-	}
+
+	splitBackN = append(splitBackN, word)
+
 	return splitBackN
 }
 

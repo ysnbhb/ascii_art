@@ -1,10 +1,11 @@
 package main
 
 import (
-	"art"
 	"fmt"
 	"os"
 	"strings"
+
+	"art"
 )
 
 func main() {
@@ -23,18 +24,17 @@ func main() {
 	} else {
 		artDraw, err = art.Art(arr[len(arr)-1])
 	}
-	t, numbre := art.Back(arr[0])
-	if t {
-		for i := 0; i < numbre; i++ {
-			fmt.Println()
-		}
-		return
-	}
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	split_backN := strings.Split(arr[0], "\\n")
+	if art.Back(split_backN) {
+		for i := 0; i < len(split_backN)-1; i++ {
+			fmt.Println()
+		}
+		return
+	}
 	for _, word := range split_backN {
 		art.PrintArt(word, artDraw)
 	}

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"strings"
 )
 
 func Checke() {
@@ -59,8 +60,13 @@ func Func1(s, filecreate, file string) {
 	if s == "" {
 		return
 	}
+	Check(s)
 	if s == `\n` {
 		s = ""
+	}
+	if !strings.HasSuffix(filecreate, ".txt") && filecreate != "" {
+		fmt.Println("Usage: go run . [OPTION] [STRING] [BANNER]\n\nEX: go run . --output=<fileName.txt> something standard")
+		return
 	}
 	mapDraw, err := Art(file)
 	if err != nil {
